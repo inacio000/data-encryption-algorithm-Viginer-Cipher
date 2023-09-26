@@ -1,16 +1,16 @@
 <template>
-    <div>
-        <h1>Vigenère Cipher</h1>
-        <label for="message">Mensagem:</label>
-        <textarea id="message" rows="3" cols="50" v-model="message"></textarea>
+    <div class="flex flex-col items-center text-center max-w-md my-6 mx-auto bg-white p-6 rounded-lg">
+        <h1 class="text-labelColor inline-block mt-2 text-sm uppercase font-bold">Vigenère Cipher</h1>
+        <label class="w-full text-start text-labelColor mt-2 text-sm font-bold">Mensagem:</label>
+        <input type="text" class="w-full block px-2 py-3 box-border border-b-2 border-inputBorder text-inputColor mb-6" v-model="message">
 
-        <label for="key">Chave:</label>
-        <input type="text" id="key" v-model="key" />
+        <label class="w-full text-start text-labelColor mt-2 text-sm font-bold">Key:</label>
+        <input type="text" class="w-full block px-2 py-3 box-border border-b-2 border-inputBorder text-inputColor mb-6" v-model="key" />
 
-        <button @click="encryptMessage">Criptografar</button>
-        <button @click="decryptMessage">Descriptografar</button>
-        <h2>Resultado:</h2>
-        <div id="result">{{ result }}</div>
+        <button @click="encryptMessage" class="bg-blue-600 py-2 px-4 mt-2 text-white rounded-3xl">Criptografar</button>
+        <button @click="decryptMessage" class="bg-blue-600 py-2 px-4 mt-2 text-white rounded-3xl">Descriptografar</button>
+        <h2 class="text-labelColor inline-block my-5 border-b-4 text-sm uppercase font-bold">Resultado</h2>
+        <div><span class="font-bold">{{ result }}</span></div>
     </div>
 </template>
 
@@ -38,15 +38,12 @@ export default {
                     const encryptedChar = String.fromCharCode(((messageChar - charCodeA + keyChar - charCodeA) % 26) + charCodeA);
                     encryptedMessage += encryptedChar;
                 } else {
-                    // Se o caractere não for uma letra maiúscula, mantenha-o inalterado
                     encryptedMessage += char;
                 }
             }
 
             return encryptedMessage;
         },
-
-        // Função para descriptografar uma mensagem usando o Vigenère Cipher
         vigenereDecrypt(encryptedMessage, key) {
             let decryptedMessage = '';
             const keyLength = key.length;
@@ -61,7 +58,6 @@ export default {
                     const decryptedChar = String.fromCharCode(((encryptedChar - charCodeA - keyChar + 26) % 26) + charCodeA);
                     decryptedMessage += decryptedChar;
                 } else {
-                    // Se o caractere não for uma letra maiúscula, mantenha-o inalterado
                     decryptedMessage += char;
                 }
             }
@@ -71,8 +67,7 @@ export default {
 
         encryptMessage() {
             const encryptedMessage = this.vigenereEncrypt(this.message, this.key);
-            this.result = `Mensagem Criptografada: ${encryptedMessage}`;
-            console.log(encryptedMessage)
+            this.result = `Mensagem Criptografada: ${encryptedMessage}`
         },
         decryptMessage() {
             const decryptedMessage = this.vigenereDecrypt(this.message, this.key);
