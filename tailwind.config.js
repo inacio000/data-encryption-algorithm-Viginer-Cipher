@@ -8,6 +8,8 @@ module.exports = {
         inputColor: '#555',
         inputBorder: '#ddd',
         bodyBg: '#eee',
+        modalbg: '#00000080',
+        titlecolor: '#03cfb4'
       }
     },
   },
