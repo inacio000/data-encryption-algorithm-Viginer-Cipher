@@ -1,18 +1,20 @@
 <template>
-  <VigenereCipher />
+  <HomePage />
 </template>
 
 <script>
-import VigenereCipher from './components/VigenereCipher.vue';
+import HomePage from './components/HomePage.vue'
 
 export default {
   name: 'App',
-  components: { VigenereCipher }
+  components: { 
+    HomePage
+   }
 }
 </script>
 
 <style>
 body {
-  background: grey;
+  background: rgba(157, 187, 207, 0.836);
 }
 </style>
