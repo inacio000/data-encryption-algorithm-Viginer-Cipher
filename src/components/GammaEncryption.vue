@@ -44,7 +44,7 @@ export default {
             for (let i = 0; i < mensagem.length; i++) {
                 const charDaMensagem = mensagem.charCodeAt(i);
                 const charDaChave = chave.charCodeAt(i % chave.length);
-                const charCriptografado = charDaMensagem ^ charDaChave;
+                const charCriptografado = charDaMensagem + charDaChave;
                 mensagemCifrada += String.fromCharCode(charCriptografado);
             }
             return mensagemCifrada;
@@ -54,7 +54,7 @@ export default {
             for (let i = 0; i < mensagemCifrada.length; i++) {
                 const charDaMensagemCifrada = mensagemCifrada.charCodeAt(i);
                 const charDaChave = chave.charCodeAt(i % chave.length);
-                const charDescriptografado = charDaMensagemCifrada ^ charDaChave;
+                const charDescriptografado = charDaMensagemCifrada - charDaChave;
                 mensagemOriginal += String.fromCharCode(charDescriptografado);
             }
             return mensagemOriginal;
